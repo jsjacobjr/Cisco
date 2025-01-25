@@ -38,12 +38,13 @@ FROM ENTERING YOUR NETWORK.
 step1: give Unlimited internet to EDGE:
 @edge
 CONFIG T
+hostname firewall-21
 no logging console
 Int Gi 2
 no shut
 ip add 192.168.102.11 255.255.255.0
-@telnet use secureCRT: telnet 192.168.108.5
-in SEcureCRT, Paste This:
+!@telnet use secureCRT: telnet 192.168.108.5
+!in SEcureCRT, Paste This:
 config t
 IP ROUTE 0.0.0.0  0.0.0.0 208.8.8.2
 ip name-server 8.8.8.8 1.1.1.1
@@ -54,7 +55,7 @@ ip add 208.8.8.11 255.255.255.0
 int gi 3
 no shut
 ip add 192.168.103.11 255.255.255.0
-
+end
 
 ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
 
@@ -128,11 +129,12 @@ www.iptorrents.com
 config t
 NO ip access-list standard NOTORS
 ip access-list standard NOTORS
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
+DENY  162.159.0.0  0.0.255.255
+DENY  104.21.0.0   0.0.255.255
+DENY  13.248.0.0   0.0.255.255
+DENY  104.21.0.0   0.0.255.255
+DENY  172.67.0.0   0.0.255.255
+DENY  104.21.0.0   0.0.255.255
 Permit Any
 Int Gi 1
  ip access-group NOTORS in
@@ -292,14 +294,14 @@ Top 5 UTM: 1.FortinetFortigate: syet
 Firewall Profile no.1: use ExtendedACL vs NamedExtendedAcl:
 ex.1: you are the Blue Team/SOC guys for pogo sites:
 www.web310.com open only http, https, ping
-www.web311.com open only dns, https, ssh       ==> 6 lines:
+www.web311.com open only dns, https       ==> 5 lines:
   GOLDEN  FIREWALL FORMULA:  paloalto,fortinet,cisco,checkpoint.
    protocol         hacker    victim       port
 tcp,udp,icmp,IP     Any      web310/11
 Config t
 service timestamps log datetime
 service timestamps debug datetime
-logging 10.m.1.10
+logging 10.21.1.10
 logging trap 5
 NO IP access-list Extended FWP1
 IP access-list Extended FWP1
@@ -308,13 +310,12 @@ IP access-list Extended FWP1
  Permit icmp Any host www.web310.com log
  Permit tcp Any host www.web311.com eq 53 log
  Permit tcp Any host www.web311.com eq 443 log
- Permit tcp Any host www.web311.com eq 22 log
  Int Gi 3
   ip access-group FWP1 in
 REMOVE FIREWALL:
 CONfig t
  Int Gi 3
-  NO ip access-group FWP1 in
+  NO ip access-group FWP1a in
 end
 
 TAKASSSSSSSSG:  control shift 6 bitaw X
@@ -470,11 +471,11 @@ show ntp associations
 GIVE IP ADDRESS TO LINUX BLDGONE AND BLDGTWO:
 sudo su
 bldg1:
-ifconfig eth0 192.168.103.11 netmask 255.255.255.0 up
-route add default gw 192.168.103.8
+ifconfig eth0 192.168.103.21 netmask 255.255.255.0 up
+route add default gw 192.168.103.11
 bldg2:
-ifconfig eth0 192.168.103.12 netmask 255.255.255.0 up
-route add default gw 192.168.103.8
+ifconfig eth0 192.168.103.22 netmask 255.255.255.0 up
+route add default gw 192.168.103.11
 ping 8.8.8.8   1.1.1.1  4.2.2.2  8.8.4.4
 
 TASK9: NAT: NETWORK ADDRESS TRANSLATION SERVICE:
